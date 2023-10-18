@@ -35,7 +35,7 @@ Also, you need to set up the .env file as it is set up in the `.env.example` fil
 # Technology Stack
 * Python/Django/DjangoORM
 * PostgreSQL
-* HTML/css
+* HTML/CSS
 
 # List of Users:
 ![users](media_readme/users.png)
