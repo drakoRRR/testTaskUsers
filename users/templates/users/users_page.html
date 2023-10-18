@@ -18,30 +18,28 @@
             <th>Group</th>
             <th>Actions</th>
         </tr>
+        {% for user in object_list %}
         <tr>
-            <td>User1</td>
-            <td>2023-10-18</td>
-            <td>Group A</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.created }}</td>
+            <td>{{ user.group }}</td>
             <td>
                 <a href="{% url 'users:edit-user' %}"><button>Edit</button></a>
                 <a href=""><button>Delete</button></a>
             </td>
         </tr>
-        <!-- Add more user rows here -->
+        {% endfor %}
     </table>
     <div class="container">
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter username" required>
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
             </div>
             <div class="form-group">
-                <label for="group">Group:</label>
-                <select id="group" name="group">
-                    <option value="Group A">Group A</option>
-                    <option value="Group B">Group B</option>
-                    <option value="Group C">Group C</option>
-                </select>
+                <label for="{{ form.group.id_for_label }}">Group:</label>
+                {{ form.group }}
             </div>
             <div class="form-group">
                 <button type="submit" class="submit-button">Add User</button>
