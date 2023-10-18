@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Edit User</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/style_for_edit_user.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Edit User</h1>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="group">Group:</label>
+                <select id="group" name="group">
+                    <option value="Group A">Group A</option>
+                    <option value="Group B">Group B</option>
+                    <option value="Group C">Group C</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

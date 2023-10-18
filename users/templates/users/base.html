@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} {% endblock %}
+    {% block css %} {% endblock %}
+</head>
+<body>
+<nav>
+    <ul class="navbar">
+        <li><a href="{% url 'users:users' %}">Users</a></li>
+        <li><a href="{% url 'users:groups' %}">Groups</a></li>
+    </ul>
+</nav>
+{% block content %}{% endblock %}
+</body>
+</html>

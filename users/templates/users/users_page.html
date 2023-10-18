@@ -1,0 +1,51 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>List of Users</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/users_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>List of Users</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Created</th>
+            <th>Group</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td>User1</td>
+            <td>2023-10-18</td>
+            <td>Group A</td>
+            <td>
+                <a href="{% url 'users:edit-user' %}"><button>Edit</button></a>
+                <a href=""><button>Delete</button></a>
+            </td>
+        </tr>
+        <!-- Add more user rows here -->
+    </table>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="group">Group:</label>
+                <select id="group" name="group">
+                    <option value="Group A">Group A</option>
+                    <option value="Group B">Group B</option>
+                    <option value="Group C">Group C</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="submit-button">Add User</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
