@@ -24,8 +24,12 @@
             <td>{{ group.name }}</td>
             <td>{{ group.description }}</td>
             <td>
-                <a href="{% url 'users:edit-group' %}"><button>Edit</button></a>
-                <button class="delete-button">Delete</button>
+                <a href="{% url 'users:edit-group' group.id %}"><button>Edit</button></a>
+                {% if group.user_set.exists %}
+                    <span class="cannot-delete">Cannot delete this group because it has users.</span>
+                {% else %}
+                    <a href="{% url 'users:del-group' group.id %}"><button class="delete-button">Delete</button></a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

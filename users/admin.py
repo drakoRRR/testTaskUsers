@@ -12,6 +12,6 @@ class GroupAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('group', 'created')
+    list_display = ('username', 'group', 'created')
     readonly_fields = ('created',)
 

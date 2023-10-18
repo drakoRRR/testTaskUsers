@@ -3,7 +3,9 @@ from django import forms
 from users.models import User, Group
 
 
-class AddUserForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
+    '''Form for adding and edit User'''
+
     username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Enter username'
     }), required=True)
@@ -14,7 +16,9 @@ class AddUserForm(forms.ModelForm):
         fields = ('username', 'group')
 
 
-class AddGroupForm(forms.ModelForm):
+class GroupForm(forms.ModelForm):
+    '''Form for adding and edit Group'''
+
     name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Enter group name'
     }), required=True)
@@ -23,5 +27,5 @@ class AddGroupForm(forms.ModelForm):
     }), required=True)
 
     class Meta:
-        model = User
+        model = Group
         fields = ('name', 'description')

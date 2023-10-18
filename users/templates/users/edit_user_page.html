@@ -12,21 +12,18 @@
 {% block content %}
     <h1>Edit User</h1>
     <div class="container">
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter username" required>
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
             </div>
             <div class="form-group">
-                <label for="group">Group:</label>
-                <select id="group" name="group">
-                    <option value="Group A">Group A</option>
-                    <option value="Group B">Group B</option>
-                    <option value="Group C">Group C</option>
-                </select>
+                <label for="{{ form.group.id_for_label }}">Group:</label>
+                {{ form.group }}
             </div>
             <div class="form-group">
-                <button type="submit" class="submit-button">Submit</button>
+                <button type="submit" class="submit-button">Update User</button>
             </div>
         </form>
     </div>
