@@ -30,12 +30,19 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
+## Docker
+```
+docker-compose up --build django_project
+docker-compose up
+```
+
 Also, you need to set up the .env file as it is set up in the `.env.example` file.
 
 # Technology Stack
 * Python/Django/DjangoORM
 * PostgreSQL
 * HTML/CSS
+* Docker
 
 # List of Users:
 ![users](media_readme/users.png)
