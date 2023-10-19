@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+  django_project:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py runserver"
+    depends_on:
+      - postgres_db
+      - migration
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+
+  migration:
+    container_name: db_migration
+    command: python manage.py migrate
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres_db
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+
+  postgres_db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_storage:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_storage:
